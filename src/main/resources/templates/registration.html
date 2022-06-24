@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Aplikacja Taco Cloud</title>
+</head>
+<body>
+<h1>Rejestracja użytkownika</h1>
+<form method="POST" th:action="@{/register}" id="registerForm" th:object="${RegistrationForm}">
+
+  <label for="username">Nazwa użytkownika: </label>
+  <input class="form-control" id ="username" type="text" th:field="*{username}"/>
+  <span style="color:#FF0001" class="validationError"
+        th:if="${#fields.hasErrors('username')}"
+        th:errors="*{name}">Brak nazwy użytkownika</span>
+
+
+  <label for="password">Hasło: </label>
+  <input class="form-control" id ="password" type="text" th:field="*{password}"/>
+  <span style="color:#FF0001" class="validationError"
+        th:if="${#fields.hasErrors('password')}"
+        th:errors="*{name}">Hasło niezgodne ze wzorem</span>
+
+  <input type="submit" value="Zarejestruj"/>
+
+</form>
+</body>
+</html>
